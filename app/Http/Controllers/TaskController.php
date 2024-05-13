@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    private $task;
+
+    public function __construct(Task $task)
+    {
+        $this->task = $task;
+    }
     public function index()
     {
-        //
+        $task = $this->task->all();
+        return $task;
     }
 
     /**
@@ -27,17 +35,22 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaskRequest $request)
+    public function store(Request $request)
     {
-        //
+        $task = $this->task->create($request->all());
+        return $task;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+    public function show(int $id)
     {
-        //
+        $task = $this->task->find($id);
+        if ($task === null) {
+            return ['Task not found.'];
+        }
+        return $task;
     }
 
     /**
@@ -51,16 +64,23 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(Request $request, $id)
     {
-        //
+        $task = $this->task->find($id);
+        $task->update($request->all());
+        return $task;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $task)
+    public function destroy(int $id)
     {
-        //
+        $task = $this->task->find($id);
+        if ($task === null) {
+            return ['Task not found.'];
+        }
+        $task->delete();
+        return ['Task deleted!'];
     }
 }
