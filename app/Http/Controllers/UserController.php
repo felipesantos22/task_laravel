@@ -21,6 +21,11 @@ class UserController extends Controller
         return view('home');
     }
 
+    public function error()
+    {
+        return view('error');
+    }
+
 
     public function auth(Request $request): RedirectResponse
     {
@@ -31,12 +36,13 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
             return redirect()->intended('home');
+        }else{
+            return redirect()->intended('error');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        // return back()->withErrors([
+        //     'email' => 'The provided credentials do not match our records.',
+        // ])->onlyInput('email');
     }
 }
