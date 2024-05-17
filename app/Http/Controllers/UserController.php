@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,19 +12,39 @@ class UserController extends Controller
     /**
      * Handle an authentication attempt.
      */
+
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
     public function login()
     {
         return view('login');
     }
 
-    public function index()
+    public function home()
     {
-        return view('home');
+        $name = "Felipe";
+        return view('home', compact('name'));
     }
 
     public function error()
     {
         return view('error');
+    }
+
+    public function store(Request $request)
+    {
+        $user = $this->user->create($request->all());
+        return $user;
+    }
+
+    public function index()
+    {
+        $user = $this->user->all();
+        return $user;
     }
 
 
@@ -37,7 +58,7 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('home');
-        }else{
+        } else {
             return redirect()->intended('error');
         }
 

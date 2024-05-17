@@ -9,5 +9,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'login'])->name('login');
 Route::post('/auth', [UserController::class, 'auth'])->name('auth');
-Route::get('/home', [UserController::class, 'index'])->name('home');
+Route::get('/home', [UserController::class, 'home'])->name('home');
 Route::get('/error', [UserController::class, 'error'])->name('error');
