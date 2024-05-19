@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layout')
+
+@section('title', 'Home')
+
+@section('layout')
+
     <h1>Home</h1>
     {{$name}}
-</body>
-</html>
+    {{$test ?? 'Variavel teste não existe'}}
+    {{isset($record)? 'Existe' : 'Não existe'}}
+
+    
+@endsection
