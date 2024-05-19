@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function error()
     {
-        return view('error');
+        return view('404');
     }
 
     public function store(Request $request)

@@ -2,7 +2,7 @@
 
 @section('title', 'Home')
 
-@section('layout')
+@section('app')
 
     <h1>Home</h1>
     {{$name}}

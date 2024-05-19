@@ -20,16 +20,19 @@ class TaskController extends Controller
     }
     public function index()
     {
-        $task = $this->task->all();
-        return $task;
+        $tasks = $this->task->all();
+        //return response()->json(['message' => $task], 200);
+        return view('form', compact('tasks'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->task->create($request->all());
+        //return response()->json(['message' => 'Item created'], 201);
+        return redirect()->route('tasks.index');
     }
 
     /**

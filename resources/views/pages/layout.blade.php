@@ -8,6 +8,6 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    @yield('layout')
+    @yield('app')
 </body>
 </html>

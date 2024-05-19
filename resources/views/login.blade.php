@@ -1,8 +1,8 @@
 {{-- Nome da pasta que vai herdar as formatações --}}
-@extends('layout')
+@extends('pages.layout')
 
 {{-- Nome que está no yield --}}
-@section('layout')
+@section('app')
 
 <body>
     <div class="login-container">
