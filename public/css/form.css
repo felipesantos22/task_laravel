@@ -1,46 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    background-color: whitesmoke;
 }
 
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.to-do {
+    margin-top: 40px;
+    width: 60%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input[type="text"] {
+.insert {
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background-color: lightgray;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 6px 5px 10px 0px grey;
+    align-items: center;
+    width: 100%;
+}
+
+.textInsert {
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    width: 90%;
+    flex: 1;
 }
 
 button {
-    padding: 10px;
-    background-color: #007BFF;
-    color: #fff;
+    width: 10%;
+    background: transparent;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
+    outline: none;
 }
 
-button:hover {
-    background-color: #0056b3;
+.bx-plus {
+    font-size: 30px;
+    margin-left: 10px;
+    background-color: rgb(139, 14, 223);
+    border-radius: 50%;
+    padding: 5px;
+    color: white;
+}
+
+.task-list {
+    list-style-type: none; 
+    margin-top: 20px;
+    padding: 0;
+    width: 100%;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 6px 5px 10px 0px grey;
+    width: 100%;
+}
+
+.task-item i {
+    cursor: pointer;
+    color: brown;
+}
+
+.no-tasks {
+    padding: 10px;
+    background: lightgray;
+    border-radius: 10px;
+    box-shadow: 6px 5px 10px 0px grey;
+    color: dimgray;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.icons{
+    text-align: right;
 }
