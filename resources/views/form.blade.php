@@ -24,11 +24,11 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit">
-                                <i class="bi bi-trash3" style="font-size: 25px; color:black"></i>
+                                <i class="bi bi-trash3" style="font-size: 20px; color:black"></i>
                             </button>
                         </form>
                         <a href="{{ route('tasks.edit', $task->id) }}">
-                            <i class="bi bi-pencil-square" style="font-size: 25px; color:black"></i>
+                            <i class="bi bi-pencil-square" style="font-size: 20px; color:black"></i>
                         </a>
                     </div>
                 </li>
