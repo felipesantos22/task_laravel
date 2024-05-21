@@ -20,17 +20,16 @@
                     {{ $task->name }}
                     <div class="icons">
                         {{-- Formulário de Exclusão --}}
-                        <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
+                        <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
-                                <i class="bi bi-trash3-fill"></i>
+                            <button type="submit">
+                                <i class="bi bi-trash3" style="font-size: 25px; color:black"></i>
                             </button>
                         </form>
-                        {{-- Link para Edição (se necessário) --}}
-                        {{-- <a href="{{ route('tasks.edit', $task->id) }}">
-                            <i class="bi bi-pencil-square"></i>
-                        </a> --}}
+                        <a href="{{ route('tasks.edit', $task->id) }}">
+                            <i class="bi bi-pencil-square" style="font-size: 25px; color:black"></i>
+                        </a>
                     </div>
                 </li>
             @empty

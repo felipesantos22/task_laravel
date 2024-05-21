@@ -60,7 +60,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('edit', compact('task'));
     }
 
     /**
@@ -69,8 +69,11 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $task = $this->task->find($id);
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
         $task->update($request->all());
-        return $task;
+        return redirect()->route('tasks.index');
     }
 
     /**
