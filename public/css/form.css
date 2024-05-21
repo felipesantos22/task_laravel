@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 body {
@@ -88,5 +88,12 @@ button {
 }
 
 .icons{
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text{
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Calligraffitti", cursive;
 }

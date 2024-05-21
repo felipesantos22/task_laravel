@@ -2,25 +2,40 @@
 
 @section('app')
     <div class="to-do">
-        <form id="task-form" action="{{ route('tasks.create') }}" method="POST">
+        <h1 class="text">Lista de Tarefas</h1>
+
+        {{-- Formulário de Criação de Tarefa --}}
+        <form id="task-form" action="{{ route('tasks.store') }}" method="POST">
             @csrf
             <div class="insert">
                 <input class="textInsert" type="text" id="name" name="name" required />
                 <button type="submit"><i class="bi bi-plus-circle" style="font-size: 30px;"></i></button>
             </div>
-            <ul class="task-list">
-                @forelse ($tasks as $task)
-                    <li class="task-item">
-                        {{ $task->name }}
-                        <div class="icons">
-                            <i class="bi bi-trash3-fill"></i>
-                            <i class="bi bi-pencil-square"></i>
-                        </div>
-                    </li>
-                @empty
-                    <li class="no-tasks">Nenhuma tarefa encontrada.</li>
-                @endforelse
-            </ul>
         </form>
+
+        {{-- Lista de Tarefas --}}
+        <ul class="task-list">
+            @forelse ($tasks as $task)
+                <li class="task-item">
+                    {{ $task->name }}
+                    <div class="icons">
+                        {{-- Formulário de Exclusão --}}
+                        <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
+                        </form>
+                        {{-- Link para Edição (se necessário) --}}
+                        {{-- <a href="{{ route('tasks.edit', $task->id) }}">
+                            <i class="bi bi-pencil-square"></i>
+                        </a> --}}
+                    </div>
+                </li>
+            @empty
+                <li class="no-tasks">Nenhuma tarefa encontrada.</li>
+            @endforelse
+        </ul>
     </div>
 @endsection

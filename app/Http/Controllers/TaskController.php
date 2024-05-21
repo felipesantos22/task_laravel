@@ -31,8 +31,7 @@ class TaskController extends Controller
     public function create(Request $request)
     {
         $this->task->create($request->all());
-        //return response()->json(['message' => 'Item created'], 201);
-        return redirect()->route('tasks.index');
+        return response()->json(['message' => 'Item created'], 201);
     }
 
     /**
@@ -40,8 +39,8 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = $this->task->create($request->all());
-        return $task;
+        $this->task->create($request->all());
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -84,6 +83,6 @@ class TaskController extends Controller
             return ['Task not found.'];
         }
         $task->delete();
-        return ['Task deleted!'];
+        return redirect()->route('tasks.index');
     }
 }
